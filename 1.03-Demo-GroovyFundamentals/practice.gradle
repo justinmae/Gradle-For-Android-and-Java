@@ -1,0 +1,75 @@
+task groovy << {}
+
+println "Hello groovy!"
+
+class JavaGreeter {
+	public void sayHello() {
+		System.out.println("hello groooooovy");
+	}
+}
+
+JavaGreeter javaGreeter = new JavaGreeter();
+javaGreeter.sayHello();
+
+
+
+def foo = 6.5
+
+println "foo has value: $foo"
+println "let's do some math 6+5 = ${6+5}"
+
+println "foo is type ${foo.class} and has value: $foo"
+foo = "abc"
+println "foo is type ${foo.class} and has value: $foo"
+
+
+
+def doubleIt(n) {
+	n + n
+}
+
+foo = 5
+println "doubleIt($foo) = ${doubleIt(foo)}"
+
+foo = "foobar"
+println "doubleIt($foo) = ${doubleIt(foo)}"
+
+
+
+def noArg() {
+	println "called noArg"
+}
+
+def oneArg(x) {
+	println "called oneArg with $x"
+	x
+}
+
+def twoArg(x, y) {
+	println "called twoArg with $x and $y"
+	x + y
+}
+
+
+oneArg 5
+oneArg "hello"
+//twoArg 5 10 //Doesn't work because there was no comma
+twoArg 5, 10
+twoArg 5, "hello"
+
+//twoArg oneArg 5, "hello" // ambiguous - doesn't work
+twoArg oneArg(5), "hello"	//fixed ambiguity	
+
+//noArg	// noArg needs parenthesis
+noArg()
+
+
+
+
+
+
+
+
+
+
+
