@@ -1,0 +1,55 @@
+project.task("myTask1")
+task("myTask2")		//since the entire build script delegates to 'project', don't need it
+task "myTask3"		// don't need parenthesis either
+task myTask4		// advanced Groovy feature to change how the syntax of task declaration is compiled
+
+myTask4.description = "what's shown in the task list. Next to task name"
+myTask4.group = "this is the heading for this task,"
+myTask4.doLast {println "Do this last"}
+
+myTask4.doFirst {println "Do this first"}
+myTask4.leftShift {println "Do this more last"}
+myTask4 << {println "Do this last of all"}		// same as leftShift
+
+//declare task and then give it immediate action
+task myTask5 << {
+	println "here's how to declare a task and give it an action"
+}
+
+// give task configuration closure when it's declared
+task myTask6 {
+	description "here's a task with configuration block"
+	group "some group"
+	doLast {
+		println "here's the action"
+	}
+}
+
+task myTask7 {
+	description("description")	//function call works
+	group = "some other group"	// assignment works
+	doLast {
+		println "Here's the action"
+	}
+}
+//The only gotcha is that you must include the equals sign or parentheses when
+//assigning a collection to a property.
+
+
+/*
+
+One more important piece of syntax. There are some task properties you can set
+using the following syntax:
+
+*/
+
+task myTask8(description: "another description") << {
+	println "do something"
+}
+
+
+
+
+
+
+
