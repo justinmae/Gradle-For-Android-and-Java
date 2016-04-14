@@ -1,0 +1,27 @@
+class myTask extends DefaultTask {}
+
+
+// need to remember: extends DefaultTask, @TaskAction, void doAction()
+class HelloTask extends DefaultTask {
+	@TaskAction
+	void doAction() {
+		println "hello"
+	}
+}
+
+task hello(type: HelloTask)
+
+
+
+class HelloNameTask extends DefaultTask {
+	String firstName
+	@TaskAction
+	void doAction() {
+		println firstName
+		println "hello $firstName"
+	}
+}
+
+task helloName(type: HelloNameTask) {
+	firstName "justin"
+}
