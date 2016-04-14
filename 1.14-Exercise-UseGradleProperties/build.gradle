@@ -32,3 +32,11 @@ task bundleWeb(type: Zip) {
 //ext {
 //	bundleBaseName = 'zip'
 //}
+
+//unless << or leftshift is added to bundleWeb
+//task bundleWeb(type: Zip) << {
+//    baseName = bundleBaseName
+//    destinationDir = file(webOutputDir)
+//
+//    from 'src/web'
+//}
