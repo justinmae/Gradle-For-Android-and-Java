@@ -1,0 +1,61 @@
+task copyTask(type: Copy)
+
+task copyImages(type: Copy) {
+	from "images"
+	into "build"
+}
+
+//doesn't copy if folder already exists
+task copyJpegs(type: Copy) {
+	from 'images'
+	include '*.jpg'
+	into 'build'
+}
+
+
+// puts files into build/jpeg or build/gif
+task copyImageFolders(type: Copy) {
+	from('images') {
+		include '*.jpg'
+		into 'jpeg'
+	}
+
+	from('images') {
+		include '*.gif'
+		into 'gif'
+	}
+
+	into 'build'
+}
+
+
+task zipImages(type: Zip) {
+	baseName 'images'				//archive name
+	destinationDir = file('build')	//archive directory
+	from 'images'					// source file/folder
+}
+
+// GIFs and JPEGs are in their own directories within the images folder
+// the images folder is then archived
+task zipImageFolders(type: Zip) {
+	baseName 'images'				//archive name
+	destinationDir = file('build')	//archive directory
+
+	from('images') {
+		include '*.jpg'
+		into 'jpeg'
+	}
+
+	from('images') {
+		include '*.gif'
+		into 'gif'
+	}
+}
+
+
+task deleteBuild(type: Delete) {
+	delete 'build'
+}
+
+
+
