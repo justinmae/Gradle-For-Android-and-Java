@@ -1,0 +1,27 @@
+// gradle.properties 3rd priority
+
+// this is not a correct way to create task
+// prioritizes properties file over ext file
+task printGreeting1 {
+	println greeting
+}
+
+// left shift - similar to doLate
+task printGreeting2 << {
+	println greeting
+}
+
+// similar to left shift
+task printGreeting3 {
+	doLast {println greeting}
+}
+
+// set property in command line 2nd priority 
+// gradle -b practice.gradle -Pgreeting="hello" pG
+
+
+// pass a closure to project.ext (for "extra properties")
+// properties passed in this way takes priority over all other definitions.
+ext {
+	greeting = "from inside build file"
+}
