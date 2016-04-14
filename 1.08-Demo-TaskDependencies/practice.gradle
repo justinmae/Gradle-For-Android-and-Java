@@ -1,0 +1,68 @@
+// if you run 'gradle tasks' you won't see	'putOnSocks'
+// gradle assumes that 'putOnSocks' exists only to help 'putOnShoes'
+// you can see it if you run 'gradle tasks --all'
+task putOnSocks {
+	doLast {
+		println "Putting on socks"
+	}
+}
+
+task putOnShoes {
+	dependsOn "putOnSocks"
+	doLast {
+		println "Putting on shoes"
+	}
+}
+
+
+
+task eatBreakfast {
+	finalizedBy "brushYourTeeth"
+	doLast {
+		println "eating breakfast"
+	}
+}
+
+task brushYourTeeth {
+	doLast {
+		println "brushing teeth"
+	}
+}
+
+
+task takeShower {
+	doLast {
+		println "showering"
+	}
+}
+
+task putOnFragrance {
+	shouldRunAfter takeShower
+	doLast {
+		println "smellin' fresh"
+	}
+}
+
+
+task getReady {
+	dependsOn = [takeShower, eatBreakfast, putOnShoes]
+}
+
+putOnShoes.mustRunAfter takeShower
+
+
+
+task getEquipped {
+	dependsOn tasks.matching { task -> task.name.startsWith("putOn")}
+	doLast {
+		println "all geared up!"
+	}
+}
+
+
+
+
+
+
+
+
