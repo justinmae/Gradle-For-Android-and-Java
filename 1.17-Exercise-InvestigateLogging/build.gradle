@@ -26,14 +26,31 @@ Exercises:
 task hello(type: HelloTask)
 
 class HelloTask extends DefaultTask {
+
     @TaskAction
     void doAction() {
-        println 'Hello World'
+      logger.info("HELLLOOOOOOO from info")
+        logger.lifecycle ("HELLLOOOOOOO from lifecycle")
+      logger.info("HELLLOOOOOOO from info")
     }
 }
 
-/*
+
 task derpy << {
     primp "Herp de derp"
 }
+/*
+Execution failed for task ':derpy'.
+> Could not find method primp() for arguments [Herp de derp] on root project '1.17-Exercise-InvestigateLogging'.
 */
+
+
+logger.debug "catch me if you can"
+// gradle --debug | grep "catch me"
+
+task hello2 << {println "What level am I on? I think quiet"}
+// 09:37:58.403 [QUIET] [system.out] What level am I on? I think quiet
+
+
+
+
