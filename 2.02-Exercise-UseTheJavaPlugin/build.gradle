@@ -10,3 +10,9 @@ Exercises:
    file.
 
 */
+
+apply plugin: "java"
+
+
+
+// gradle jar -> creates JAR
