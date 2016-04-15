@@ -12,22 +12,51 @@ Exercises:
 
 */
 
-println 'First top level script element'
+println 'First top level script element'	// priority: 1
 
 task first {
-    println 'First task: Configuration'
+    println 'First task: Configuration'		// priority: 2
 
     doLast {
-        println 'First task: Action'
+        println 'First task: Action'		// priority: 5
     }
 }
 
 task second(dependsOn: first) {
-    println 'Second task: Configuration'
+    println 'Second task: Configuration'	// priority: 3
 
     doLast {
-        println 'Second task: Action'
+        println 'Second task: Action'		// priority: 6 (since dependsOn: first)
     }
 }
 
-println 'Second top level script element'
+println 'Second top level script element'	// priority: 4
+
+
+// configuration runs first, then action
+/*
+Justins-MacBook-Pro:1.18-Exercise-ExploreTheBuildLifecycle justinmae$ gradle help
+First top level script element
+First task: Configuration
+Second task: Configuration
+Second top level script element
+:help
+
+Justins-MacBook-Pro:1.18-Exercise-ExploreTheBuildLifecycle justinmae$ gradle first
+First top level script element
+First task: Configuration
+Second task: Configuration
+Second top level script element
+:first
+First task: Action
+
+Justins-MacBook-Pro:1.18-Exercise-ExploreTheBuildLifecycle justinmae$ gradle second
+First top level script element
+First task: Configuration
+Second task: Configuration
+Second top level script element
+:first
+First task: Action
+:second
+Second task: Action
+*/
