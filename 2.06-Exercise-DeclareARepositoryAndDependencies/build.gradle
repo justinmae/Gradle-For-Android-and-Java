@@ -30,3 +30,21 @@ apply plugin: 'java'
 task printDependencies << {
     configurations.compile.each { println it.name }
 }
+
+repositories {
+	mavenCentral()
+
+}
+
+dependencies {
+	compile 'commons-io:commons-io:2.4'	
+	compile fileTree(dir:'libs', include:'*.jar')
+}
+
+// re-downloads dependencies - download commons-io from mavenCentral
+// gradle --refresh-dependencies printDependencies 	
+
+// uses local cache
+// gradle printDependencies
+
+
