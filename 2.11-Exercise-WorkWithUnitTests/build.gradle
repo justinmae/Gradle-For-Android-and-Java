@@ -20,3 +20,18 @@ apply plugin: 'java'
 repositories {
     mavenCentral()
 }
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+}
+
+// updated Person.java getName() method to return name instead of "foo"
+
+/*
+open build/reports/tests/index.html
+
+The first line in the stack trace shows that lien 10 in PersonTest class failed.
+
+java.lang.AssertionError
+	at com.udacity.gradle.test.PersonTest.test(PersonTest.java:10)
+*/
