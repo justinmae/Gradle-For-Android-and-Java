@@ -40,9 +40,11 @@ dependencies {
 }
 
 
+// archive names: basename-appendix-version-classifier-extension
 task zipDeps(type: Zip) {
 	baseName 'dependencyArchive'
 	classifier 'deps'
+	version = '4.2'
 	from configurations.deps
 	// Note: putting single quotes around sourcePath doesn't work: 
 	// from 'configurations.deps'
