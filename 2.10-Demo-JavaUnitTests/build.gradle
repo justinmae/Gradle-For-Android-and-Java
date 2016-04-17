@@ -44,3 +44,18 @@ repositories {
 dependencies {
     testCompile 'junit:junit:4.12'
 }
+
+
+
+/*
+You can, of course, change the location
+of your test code by configuring the 'test' source set.
+sourceSets {
+	test {
+		java {
+			srcDir 'newLocationOfTestCode'
+		}
+	}
+}
+*/
+
