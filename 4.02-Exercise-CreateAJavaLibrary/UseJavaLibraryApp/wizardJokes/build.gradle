@@ -1,0 +1,8 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.7       // needed to add this or app:preDexDebug failed
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':javaJokes')
+}
