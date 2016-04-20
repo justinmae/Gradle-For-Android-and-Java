@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">UseAndroidLibraryApp</string>
+    <string name="button_name">Get Joke</string>
+</resources>
